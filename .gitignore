@@ -42,5 +42,23 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-# Target folder
+
+######################
+# Eclipse
+######################
+ 
+*.pydevproject
+.project
+.metadata
+bin/**
+tmp/**
+tmp/**/*
 target/**
+*.tmp
+*.bak
+*.swp
+*~.nib
+local.properties
+.classpath
+.settings/
+.loadpath
