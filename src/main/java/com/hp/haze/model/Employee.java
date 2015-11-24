@@ -5,6 +5,7 @@ import static javax.persistence.FetchType.LAZY;
 
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -15,6 +16,7 @@ import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+import javax.persistence.Transient;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
@@ -28,6 +30,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 // @NamedAttributeNode("sumOfCompTimeTakenHour") })
 public class Employee {
 
+	//public static Employee getManagerEmail;
+	//public static final Employee getManagerEmail = null;
 	private Integer id;
 	private String email;
 	private String fullName;
@@ -100,7 +104,7 @@ public class Employee {
 	}
 
 	@JsonIgnore
-	@OneToMany(mappedBy = "employee")
+	@OneToMany(cascade = CascadeType.ALL, mappedBy = "employee", orphanRemoval = true)
 	public List<Task> getTasks() {
 		return tasks;
 	}
@@ -132,5 +136,10 @@ public class Employee {
 
 	public void setManager(boolean isManager) {
 		this.isManager = isManager;
+	}
+
+	@Transient
+	public boolean isManager() {
+		return isManager;
 	}
 }

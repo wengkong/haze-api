@@ -1,8 +1,11 @@
 package com.hp.haze.repository;
 
+import java.util.List;
+
 import org.springframework.data.repository.CrudRepository;
 
 import com.hp.haze.model.Employee;
+import com.hp.haze.model.Task;
 
 public interface EmployeeRepository extends CrudRepository<Employee, Integer>, EmployeeRepositoryCustom {
 
@@ -11,4 +14,5 @@ public interface EmployeeRepository extends CrudRepository<Employee, Integer>, E
 
 //	@EntityGraph(value = "employeeEntityGraph", type = EntityGraphType.FETCH)
 	Employee findByFullName(String fullName);
+
 }

@@ -69,7 +69,7 @@ public class Task {
 	}
 
 	//@Column(name = "rq_status", nullable = false, columnDefinition="char(1) default 'N'")
-	@Column(name = "rq_status", nullable = false, columnDefinition="char(1)")
+	@Column(name = "approval_status", nullable = false, columnDefinition="char(1)")
 	public Boolean getStatus() {
 		return status;
 	}
@@ -96,7 +96,7 @@ public class Task {
 	public void setDeleteFlag(Boolean deleteFlag) {
 		this.deleteFlag = deleteFlag;
 	}
-
+	
 	@ManyToOne(optional = false)
 	@JoinColumn(name = "employee_id", nullable = false)
 	public Employee getEmployee() {

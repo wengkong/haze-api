@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 @Entity
-@Table(name = "comp_times")
+@Table(name = "comptimes")
 public class CompTime {
 
 	private Integer id;
@@ -23,6 +23,7 @@ public class CompTime {
 	private Date compTimeDate;
 	private int compTimeHour;
 	private Boolean status;
+	private String remark;
 	private Boolean deleteFlag;
 	private Employee employee;
 
@@ -59,7 +60,7 @@ public class CompTime {
 		this.compTimeHour = compTimeHour;
 	}
 
-	@Column(name = "rq_status", nullable = false, columnDefinition="char(1)")
+	@Column(name = "approval_status", nullable = false, columnDefinition = "char(1)")
 	public Boolean getStatus() {
 		return status;
 	}
@@ -69,8 +70,17 @@ public class CompTime {
 
 	}
 
-	@Column(name = "delete_flag", nullable = false, columnDefinition="char(1)")
-	@Convert(converter=BooleanToYesNoConverter.class)
+	@Column(name = "remark", nullable = false, length = 200)
+	public String getRemark() {
+		return remark;
+	}
+
+	public void setRemark(String remark) {
+		this.remark = remark;
+	}
+
+	@Column(name = "delete_flag", nullable = false, columnDefinition = "char(1)")
+	@Convert(converter = BooleanToYesNoConverter.class)
 	public Boolean getDeleteFlag() {
 		return deleteFlag;
 	}
@@ -79,9 +89,9 @@ public class CompTime {
 		this.deleteFlag = deleteFlag;
 	}
 
-	@JsonIgnore
+	//@JsonIgnore
 	@ManyToOne
-    @JoinColumn(name="employee_id", nullable=false)
+	@JoinColumn(name = "employee_id", nullable = false)
 	public Employee getEmployee() {
 		return employee;
 	}
