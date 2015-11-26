@@ -30,8 +30,6 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 // @NamedAttributeNode("sumOfCompTimeTakenHour") })
 public class Employee {
 
-	//public static Employee getManagerEmail;
-	//public static final Employee getManagerEmail = null;
 	private Integer id;
 	private String email;
 	private String fullName;
